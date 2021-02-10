@@ -1,6 +1,19 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { StatusBar } from 'react-native';
+import 'react-native-gesture-handler';
 
-const App = () => <Text>Hello World</Text>;
+import Routes from './routes';
+
+const App = () => (
+  <>
+    <StatusBar
+      backgroundColor="transparent"
+      translucent
+      barStyle="light-content"
+    />
+
+    <Routes />
+  </>
+);
 
 export default App;
