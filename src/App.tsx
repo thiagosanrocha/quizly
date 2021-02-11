@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, SafeAreaView } from 'react-native';
 import 'react-native-gesture-handler';
 
 import Routes from './routes';
@@ -12,7 +12,9 @@ const App = () => (
       barStyle="light-content"
     />
 
-    <Routes />
+    <SafeAreaView style={{ flex: 1 }}>
+      <Routes />
+    </SafeAreaView>
   </>
 );
 
