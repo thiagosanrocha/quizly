@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const FeaturedImage = styled.Image`
   width: 90%;
-  margin: 100px 0 0 10%;
+  margin-left: 10%;
 `;
 
 export const Title = styled.Text`

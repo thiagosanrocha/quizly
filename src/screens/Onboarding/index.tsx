@@ -19,18 +19,11 @@ const Onboarding = () => {
       <Container>
         <FeaturedImage source={onboardingImage} />
 
-        <Title>
-          Test your
-          {'\n'}
-          knowledge.
-        </Title>
+        <Title>Test your {'\n'}knowledge.</Title>
 
         <Description>
-          Choose a category that you master
-          {'\n'}
-          and try to get it right as
-          {'\n'}
-          much as possible.
+          Choose a category that you master {'\n'}and try to get it right as
+          {'\n'}much as possible.
         </Description>
 
         <ButtonStartQuiz onPress={() => navigation.navigate('Categories')}>
