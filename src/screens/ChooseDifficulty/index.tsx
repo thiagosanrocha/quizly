@@ -15,7 +15,7 @@ const ChooseDifficulty = () => (
     </S.Title>
 
     <S.ContainerDifficultyList>
-      <S.DifficultyBar />
+      <S.DifficultyBar colors={['#BAFC2F', '#FCA82F', '#FC602F']} />
 
       <S.DifficultyList>
         <S.DifficultyCard variant="rectangular">Easy</S.DifficultyCard>

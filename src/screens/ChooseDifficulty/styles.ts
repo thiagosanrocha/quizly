@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import Card from '../../components/Card';
 
@@ -28,7 +29,7 @@ export const ContainerDifficultyList = styled.View`
   margin-top: 16px;
 `;
 
-export const DifficultyBar = styled.View`
+export const DifficultyBar = styled(LinearGradient)`
   width: 24px;
   margin-right: 16px;
 
