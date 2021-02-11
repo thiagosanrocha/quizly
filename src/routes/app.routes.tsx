@@ -1,25 +1,32 @@
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Onboarding from '../screens/Onboarding';
+import Categories from '../screens/Categories';
 
 const App = createStackNavigator();
 
 const AppRoutes = () => (
-  <NavigationContainer>
-    <App.Navigator
-      initialRouteName="Onboarding"
-      screenOptions={{
-        title: '',
-        headerTransparent: true,
-        headerTintColor: '#FFF',
-        cardStyle: { backgroundColor: '#6066D0' },
-      }}
-    >
-      <App.Screen name="Onboarding" component={Onboarding} />
-    </App.Navigator>
-  </NavigationContainer>
+  <App.Navigator
+    initialRouteName="Onboarding"
+    screenOptions={{
+      title: '',
+      headerStyle: {
+        backgroundColor: 'transparent',
+        elevation: 0,
+        shadowOpacity: 0,
+      },
+      headerTintColor: '#FFF',
+      cardStyle: { backgroundColor: '#6066D0' },
+    }}
+  >
+    <App.Screen
+      options={{ cardStyle: { backgroundColor: '#FFF' } }}
+      name="Onboarding"
+      component={Onboarding}
+    />
+    <App.Screen name="Categories" component={Categories} />
+  </App.Navigator>
 );
 
 export default AppRoutes;
