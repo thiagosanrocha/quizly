@@ -17,6 +17,7 @@ const AppRoutes = () => (
         shadowOpacity: 0,
       },
       headerTintColor: '#FFF',
+      headerLeftContainerStyle: { paddingLeft: 6, paddingTop: 6 },
       cardStyle: { backgroundColor: '#6066D0' },
     }}
   >
