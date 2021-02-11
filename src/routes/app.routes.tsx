@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import Onboarding from '../screens/Onboarding';
 import Categories from '../screens/Categories';
+import ChooseDifficulty from '../screens/ChooseDifficulty';
 
 const App = createStackNavigator();
 
@@ -27,6 +28,7 @@ const AppRoutes = () => (
       component={Onboarding}
     />
     <App.Screen name="Categories" component={Categories} />
+    <App.Screen name="ChooseDifficulty" component={ChooseDifficulty} />
   </App.Navigator>
 );
 

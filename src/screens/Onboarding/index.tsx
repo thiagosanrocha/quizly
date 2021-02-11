@@ -26,7 +26,9 @@ const Onboarding = () => {
           {'\n'}much as possible.
         </Description>
 
-        <ButtonStartQuiz onPress={() => navigation.navigate('Categories')}>
+        <ButtonStartQuiz
+          onPress={() => navigation.navigate('ChooseDifficulty')}
+        >
           Start Quiz
         </ButtonStartQuiz>
       </Container>
