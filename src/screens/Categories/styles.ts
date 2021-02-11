@@ -26,7 +26,6 @@ export const CategoryList = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
 
-  height: 88%;
   padding: 0 16px;
   margin-top: 16px;
 `;
