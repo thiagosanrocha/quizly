@@ -3,35 +3,27 @@ import { useNavigation } from '@react-navigation/native';
 
 import { onboardingImage } from '../../assets/images';
 
-import {
-  Container,
-  FeaturedImage,
-  Title,
-  Description,
-  ButtonStartQuiz,
-} from './styles';
+import * as S from './styles';
 
 const Onboarding = () => {
   const navigation = useNavigation();
 
   return (
     <>
-      <Container>
-        <FeaturedImage source={onboardingImage} />
+      <S.Container>
+        <S.FeaturedImage source={onboardingImage} />
 
-        <Title>Test your {'\n'}knowledge.</Title>
+        <S.Title>Test your {'\n'}knowledge.</S.Title>
 
-        <Description>
+        <S.Description>
           Choose a category that you master {'\n'}and try to get it right as
           {'\n'}much as possible.
-        </Description>
+        </S.Description>
 
-        <ButtonStartQuiz
-          onPress={() => navigation.navigate('ChooseDifficulty')}
-        >
+        <S.ButtonStartQuiz onPress={() => navigation.navigate('Categories')}>
           Start Quiz
-        </ButtonStartQuiz>
-      </Container>
+        </S.ButtonStartQuiz>
+      </S.Container>
     </>
   );
 };

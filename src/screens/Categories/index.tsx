@@ -3,49 +3,48 @@ import { ScrollView } from 'react-native';
 
 import { emblem } from '../../assets/images';
 
-import {
-  Container,
-  ContainerTitle,
-  Emblem,
-  Title,
-  CategoryList,
-  CardCategories,
-} from './styles';
+import * as S from './styles';
 
 export type Category = { id: string; name: string };
 
 const Categories = () => (
-  <Container>
-    <ContainerTitle>
-      <Emblem source={emblem} />
+  <S.Container>
+    <S.ContainerTitle>
+      <S.Emblem source={emblem} />
 
-      <Title>Choose {'\n'}a category</Title>
-    </ContainerTitle>
+      <S.Title>Choose {'\n'}a category</S.Title>
+    </S.ContainerTitle>
 
     <ScrollView style={{ height: '88%' }}>
-      <CategoryList>
-        <CardCategories iconName="align-left">General Knowledge</CardCategories>
+      <S.CategoryList>
+        <S.CardCategories iconName="align-left">
+          General Knowledge
+        </S.CardCategories>
 
-        <CardCategories iconName="globe">Science Nature</CardCategories>
+        <S.CardCategories iconName="globe">Science Nature</S.CardCategories>
 
-        <CardCategories iconName="film" variant="rectangular">
+        <S.CardCategories iconName="film" variant="rectangular">
           Entertainment: Film
-        </CardCategories>
+        </S.CardCategories>
 
-        <CardCategories iconName="music" variant="rectangular">
+        <S.CardCategories iconName="music" variant="rectangular">
           Entertainment: Music
-        </CardCategories>
+        </S.CardCategories>
 
-        <CardCategories iconName="airplay">Science: Computers</CardCategories>
+        <S.CardCategories iconName="airplay">
+          Science: Computers
+        </S.CardCategories>
 
-        <CardCategories iconName="smartphone">Science: Gadgets</CardCategories>
+        <S.CardCategories iconName="smartphone">
+          Science: Gadgets
+        </S.CardCategories>
 
-        <CardCategories iconName="tv" variant="rectangular">
+        <S.CardCategories iconName="tv" variant="rectangular">
           Entertainment: Television
-        </CardCategories>
-      </CategoryList>
+        </S.CardCategories>
+      </S.CategoryList>
     </ScrollView>
-  </Container>
+  </S.Container>
 );
 
 export default Categories;
