@@ -37,6 +37,10 @@ const selectedAnswers: Reducer<ISelectedAnswer[]> = (
       return state;
     }
 
+    case ActionTypes.resetSelectedAnswer: {
+      return INITIAL_STATE;
+    }
+
     default: {
       return state;
     }

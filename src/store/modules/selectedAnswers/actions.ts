@@ -20,3 +20,9 @@ export function removeSelectedAnswer(id: string) {
     },
   };
 }
+
+export function resetSelectedAnswer() {
+  return {
+    type: ActionTypes.resetSelectedAnswer,
+  };
+}
