@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Lottie from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 import { sad } from '../../assets/animations';
 
 import * as S from './styles';
+import { ISelectedAnswer } from '../../store/modules/selectedAnswers/types';
+import { IState } from '../../store';
 
 const TryAgain = () => {
+  const [userScore, setUserScore] = useState(0);
+
   const navigation = useNavigation();
+
+  const selectedAnswers = useSelector<IState, ISelectedAnswer[]>(
+    state => state.selectedAnswers,
+  );
+
+  const handleScore = useCallback(() => {
+    const totalScore = selectedAnswers.reduce((score, answer) => {
+      return answer.isCorrect ? score + 1 : score;
+    }, 0);
+
+    setUserScore(totalScore);
+  }, [selectedAnswers]);
+
+  useEffect(() => {
+    handleScore();
+  }, [handleScore]);
 
   return (
     <S.Container>
@@ -28,7 +49,7 @@ const TryAgain = () => {
         <S.ScoreTitle>YOUR SCORE</S.ScoreTitle>
 
         <S.Score>
-          <S.RightQuestions>6</S.RightQuestions> / 15
+          <S.RightQuestions>{userScore}</S.RightQuestions> / 15
         </S.Score>
       </S.Content>
 
