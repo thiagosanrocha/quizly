@@ -1,17 +1,19 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Lottie from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { sad } from '../../assets/animations';
 
 import * as S from './styles';
 import { ISelectedAnswer } from '../../store/modules/selectedAnswers/types';
+import { resetSelectedAnswer } from '../../store/modules/selectedAnswers/actions';
 import { IState } from '../../store';
 
 const TryAgain = () => {
   const [userScore, setUserScore] = useState(0);
 
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const selectedAnswers = useSelector<IState, ISelectedAnswer[]>(
@@ -29,6 +31,11 @@ const TryAgain = () => {
   useEffect(() => {
     handleScore();
   }, [handleScore]);
+
+  const handlePressButtonNewQuiz = useCallback(() => {
+    dispatch(resetSelectedAnswer());
+    navigation.navigate('Categories');
+  }, [dispatch, navigation]);
 
   return (
     <S.Container>
@@ -53,7 +60,7 @@ const TryAgain = () => {
         </S.Score>
       </S.Content>
 
-      <S.ButtonNewQuiz onPress={() => navigation.navigate('Categories')}>
+      <S.ButtonNewQuiz onPress={handlePressButtonNewQuiz}>
         New Quiz
       </S.ButtonNewQuiz>
     </S.Container>

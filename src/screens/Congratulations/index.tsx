@@ -1,10 +1,11 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Lottie from 'lottie-react-native';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { trophy } from '../../assets/animations';
 import { ISelectedAnswer } from '../../store/modules/selectedAnswers/types';
+import { resetSelectedAnswer } from '../../store/modules/selectedAnswers/actions';
 import { IState } from '../../store';
 
 import * as S from './styles';
@@ -12,6 +13,7 @@ import * as S from './styles';
 const Congratulations = () => {
   const [userScore, setUserScore] = useState(0);
 
+  const dispatch = useDispatch();
   const navigation = useNavigation();
 
   const selectedAnswers = useSelector<IState, ISelectedAnswer[]>(
@@ -29,6 +31,11 @@ const Congratulations = () => {
   useEffect(() => {
     handleScore();
   }, [handleScore]);
+
+  const handlePressButtonNewQuiz = useCallback(() => {
+    navigation.navigate('Categories');
+    dispatch(resetSelectedAnswer());
+  }, [dispatch, navigation]);
 
   return (
     <S.Container>
@@ -53,7 +60,7 @@ const Congratulations = () => {
         </S.Score>
       </S.Content>
 
-      <S.ButtonNewQuiz onPress={() => navigation.navigate('Categories')}>
+      <S.ButtonNewQuiz onPress={handlePressButtonNewQuiz}>
         New Quiz
       </S.ButtonNewQuiz>
     </S.Container>
