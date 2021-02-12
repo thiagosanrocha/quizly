@@ -5,6 +5,7 @@ import Onboarding from '../screens/Onboarding';
 import Categories from '../screens/Categories';
 import ChooseDifficulty from '../screens/ChooseDifficulty';
 import Questions from '../screens/Questions';
+import Congratulations from '../screens/Congratulations';
 
 const App = createStackNavigator();
 
@@ -31,6 +32,19 @@ const AppRoutes = () => (
     <App.Screen name="Categories" component={Categories} />
     <App.Screen name="ChooseDifficulty" component={ChooseDifficulty} />
     <App.Screen name="Questions" component={Questions} />
+    <App.Screen
+      options={{
+        headerLeft: () => null,
+        headerStyle: {
+          height: 72,
+          backgroundColor: 'transparent',
+          elevation: 0,
+          shadowOpacity: 0,
+        },
+      }}
+      name="Congratulations"
+      component={Congratulations}
+    />
   </App.Navigator>
 );
 
