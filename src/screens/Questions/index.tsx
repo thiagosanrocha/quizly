@@ -143,8 +143,15 @@ const Questions = () => {
 
   const handleModalConfirmation = useCallback(() => {
     setModalIsVisibel(false);
-    navigation.navigate('Congratulations');
-  }, [navigation]);
+
+    const score = selectedAnswers.reduce((totalScore, answer) => {
+      return answer.isCorrect ? totalScore + 1 : totalScore;
+    }, 0);
+
+    const screenToRedirect = score > 15 / 2 ? 'Congratulations' : 'TryAgain';
+
+    navigation.navigate(screenToRedirect);
+  }, [navigation, selectedAnswers]);
 
   return (
     <>
