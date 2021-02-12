@@ -51,7 +51,7 @@ const Questions = () => {
             .sort()
             .map(answer => ({
               id: uuid(),
-              text: answer,
+              text: decode(answer),
             })),
           correct_answer,
         }),
