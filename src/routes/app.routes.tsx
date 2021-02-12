@@ -10,6 +10,16 @@ import TryAgain from '../screens/TryAgain';
 
 const App = createStackNavigator();
 
+const ScreenWithoutHeader = {
+  headerLeft: () => null,
+  headerStyle: {
+    height: 72,
+    backgroundColor: 'transparent',
+    elevation: 0,
+    shadowOpacity: 0,
+  },
+};
+
 const AppRoutes = () => (
   <App.Navigator
     initialRouteName="Onboarding"
@@ -31,36 +41,24 @@ const AppRoutes = () => (
       component={Onboarding}
     />
 
-    <App.Screen name="Categories" component={Categories} />
+    <App.Screen
+      name="Categories"
+      component={Categories}
+      options={ScreenWithoutHeader}
+    />
     <App.Screen name="ChooseDifficulty" component={ChooseDifficulty} />
     <App.Screen name="Questions" component={Questions} />
 
     <App.Screen
-      options={{
-        headerLeft: () => null,
-        headerStyle: {
-          height: 72,
-          backgroundColor: 'transparent',
-          elevation: 0,
-          shadowOpacity: 0,
-        },
-      }}
       name="Congratulations"
       component={Congratulations}
+      options={ScreenWithoutHeader}
     />
 
     <App.Screen
-      options={{
-        headerLeft: () => null,
-        headerStyle: {
-          height: 72,
-          backgroundColor: 'transparent',
-          elevation: 0,
-          shadowOpacity: 0,
-        },
-      }}
       name="TryAgain"
       component={TryAgain}
+      options={ScreenWithoutHeader}
     />
   </App.Navigator>
 );
