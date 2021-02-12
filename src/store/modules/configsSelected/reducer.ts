@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 
-import { IConfigsSelected } from './types';
+import { IConfigsSelected, ActionTypes } from './types';
 
 const INITIAL_STATE: IConfigsSelected = {
   selectedCategory: 0,
@@ -12,7 +12,7 @@ const configsSelected: Reducer<IConfigsSelected> = (
   action,
 ) => {
   switch (action.type) {
-    case 'ADD_SELECTED_CATEGORY': {
+    case ActionTypes.addSelectedCategory: {
       const { selectedCategory } = action.payload;
 
       return {
@@ -21,7 +21,7 @@ const configsSelected: Reducer<IConfigsSelected> = (
       };
     }
 
-    case 'ADD_SELECTED_DIFFICULTY': {
+    case ActionTypes.addSelectedDifficulty: {
       const { selectedDifficulty } = action.payload;
 
       return {

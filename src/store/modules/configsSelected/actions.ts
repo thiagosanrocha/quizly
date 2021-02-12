@@ -1,6 +1,8 @@
+import { ActionTypes } from './types';
+
 export function addSelectedCategory(id: number) {
   return {
-    type: 'ADD_SELECTED_CATEGORY',
+    type: ActionTypes.addSelectedCategory,
     payload: {
       selectedCategory: id,
     },
@@ -9,7 +11,7 @@ export function addSelectedCategory(id: number) {
 
 export function addSelectedDifficulty(difficulty: string) {
   return {
-    type: 'ADD_SELECTED_DIFFICULTY',
+    type: ActionTypes.addSelectedDifficulty,
     payload: {
       selectedDifficulty: difficulty,
     },
