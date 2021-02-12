@@ -12,8 +12,13 @@ export type IApiResponse = {
   results: IApiQuestion[];
 };
 
-export type IQuestions = {
+export type IQuestion = {
   question: string;
-  answers: string[];
+  answers: IAnswer[];
   correct_answer: string;
+};
+
+export type IAnswer = {
+  id: string;
+  text: string;
 };
