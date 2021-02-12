@@ -4,6 +4,19 @@ export const Container = styled.View`
   padding: 0 24px;
 `;
 
+export const Loading = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LoadingText = styled.Text`
+  margin-top: -72px;
+  font-family: 'Poppins-Medium';
+  font-size: 24px;
+  color: #ffffff;
+`;
+
 export const Header = styled.View``;
 
 export const Status = styled.View`
