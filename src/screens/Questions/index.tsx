@@ -217,9 +217,10 @@ const Questions = () => {
                   {questions[currentQuestion - 1]?.answers.map(answer => (
                     <Answer
                       key={answer.id}
-                      onPress={() =>
-                        handleClickOnAnswer(answer.id, answer.text)}
                       isFocus={isSelectedAnswers(answer.id)}
+                      onPress={() =>
+                        handleClickOnAnswer(answer.id, answer.text)
+                      }
                     >
                       {answer.text}
                     </Answer>
