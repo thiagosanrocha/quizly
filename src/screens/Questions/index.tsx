@@ -185,13 +185,15 @@ const Questions = () => {
         </S.Loading>
       ) : (
         <>
-          <Modal
-            isVisible={modalIsVisibel}
-            title="Your time is not over."
-            description="Are you sure you want to finish?"
-            closeModal={handleModalClosing}
-            confirmModal={handleModalConfirmation}
-          />
+          {Math.floor(seconds / 60) % 60 < 10 && (
+            <Modal
+              isVisible={modalIsVisibel}
+              title="Your time is not over."
+              description="Are you sure you want to finish?"
+              closeModal={handleModalClosing}
+              confirmModal={handleModalConfirmation}
+            />
+          )}
 
           <S.Container>
             <S.Header>
