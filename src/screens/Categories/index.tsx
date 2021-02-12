@@ -1,50 +1,52 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { ScrollView } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
+import categoriesToShow from './categoriesToShow';
 import { emblem } from '../../assets/images';
+import { addSelectedCategory } from '../../store/modules/configsSelected/actions';
 
 import * as S from './styles';
 
 export type Category = { id: string; name: string };
 
-const Categories = () => (
-  <S.Container>
-    <S.ContainerTitle>
-      <S.Emblem source={emblem} />
+const Categories = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-      <S.Title>Choose {'\n'}a category</S.Title>
-    </S.ContainerTitle>
+  const handleAddSelectedCategory = useCallback(
+    (categoryId: number) => {
+      dispatch(addSelectedCategory(categoryId));
+      navigation.navigate('ChooseDifficulty');
+    },
+    [dispatch, navigation],
+  );
 
-    <ScrollView style={{ height: '88%' }}>
-      <S.CategoryList>
-        <S.CardCategories iconName="align-left">
-          General Knowledge
-        </S.CardCategories>
+  return (
+    <S.Container>
+      <S.ContainerTitle>
+        <S.Emblem source={emblem} />
 
-        <S.CardCategories iconName="globe">Science Nature</S.CardCategories>
+        <S.Title>Choose {'\n'}a category</S.Title>
+      </S.ContainerTitle>
 
-        <S.CardCategories iconName="film" variant="rectangular">
-          Entertainment: Film
-        </S.CardCategories>
-
-        <S.CardCategories iconName="music" variant="rectangular">
-          Entertainment: Music
-        </S.CardCategories>
-
-        <S.CardCategories iconName="airplay">
-          Science: Computers
-        </S.CardCategories>
-
-        <S.CardCategories iconName="smartphone">
-          Science: Gadgets
-        </S.CardCategories>
-
-        <S.CardCategories iconName="tv" variant="rectangular">
-          Entertainment: Television
-        </S.CardCategories>
-      </S.CategoryList>
-    </ScrollView>
-  </S.Container>
-);
+      <ScrollView style={{ height: '88%' }}>
+        <S.CategoryList>
+          {categoriesToShow.map(category => (
+            <S.CardCategories
+              key={category.id}
+              variant={category.variant ? 'rectangular' : 'square'}
+              iconName={category.iconName}
+              onPress={() => handleAddSelectedCategory(category.id)}
+            >
+              {category.name}
+            </S.CardCategories>
+          ))}
+        </S.CategoryList>
+      </ScrollView>
+    </S.Container>
+  );
+};
 
 export default Categories;

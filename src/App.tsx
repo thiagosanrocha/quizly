@@ -1,7 +1,9 @@
 import React from 'react';
 import { StatusBar, SafeAreaView } from 'react-native';
 import 'react-native-gesture-handler';
+import { Provider } from 'react-redux';
 
+import store from './store';
 import Routes from './routes';
 
 const App = () => (
@@ -13,7 +15,9 @@ const App = () => (
     />
 
     <SafeAreaView style={{ flex: 1 }}>
-      <Routes />
+      <Provider store={store}>
+        <Routes />
+      </Provider>
     </SafeAreaView>
   </>
 );

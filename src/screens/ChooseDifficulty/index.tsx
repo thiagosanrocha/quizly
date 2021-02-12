@@ -1,33 +1,63 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 
 import { emblem } from '../../assets/images';
+import { addSelectedDifficulty } from '../../store/modules/configsSelected/actions';
 
 import * as S from './styles';
 
 export type Category = { id: string; name: string };
 
-const ChooseDifficulty = () => (
-  <S.Container>
-    <S.Title>
-      <S.Emblem source={emblem} />
+const ChooseDifficulty = () => {
+  const dispatch = useDispatch();
+  const navigation = useNavigation();
 
-      <S.Text>Choose {'\n'}a difficulty</S.Text>
-    </S.Title>
+  const handleAddSelectedDifficulty = useCallback(
+    (categoryName: string) => {
+      dispatch(addSelectedDifficulty(categoryName));
+      navigation.navigate('Questions');
+    },
+    [dispatch, navigation],
+  );
 
-    <S.ContainerDifficultyList>
-      <S.DifficultyBar colors={['#BAFC2F', '#FCA82F', '#FC602F']} />
+  return (
+    <S.Container>
+      <S.Title>
+        <S.Emblem source={emblem} />
 
-      <S.DifficultyList>
-        <S.DifficultyCard variant="rectangular">Easy</S.DifficultyCard>
+        <S.Text>Choose {'\n'}a difficulty</S.Text>
+      </S.Title>
 
-        <S.DifficultyCard variant="rectangular">Medium</S.DifficultyCard>
+      <S.ContainerDifficultyList>
+        <S.DifficultyBar colors={['#BAFC2F', '#FCA82F', '#FC602F']} />
 
-        <S.DifficultyCard style={{ marginBottom: 0 }} variant="rectangular">
-          Hard
-        </S.DifficultyCard>
-      </S.DifficultyList>
-    </S.ContainerDifficultyList>
-  </S.Container>
-);
+        <S.DifficultyList>
+          <S.DifficultyCard
+            variant="rectangular"
+            onPress={() => handleAddSelectedDifficulty('easy')}
+          >
+            Easy
+          </S.DifficultyCard>
+
+          <S.DifficultyCard
+            variant="rectangular"
+            onPress={() => handleAddSelectedDifficulty('medium')}
+          >
+            Medium
+          </S.DifficultyCard>
+
+          <S.DifficultyCard
+            style={{ marginBottom: 0 }}
+            variant="rectangular"
+            onPress={() => handleAddSelectedDifficulty('hard')}
+          >
+            Hard
+          </S.DifficultyCard>
+        </S.DifficultyList>
+      </S.ContainerDifficultyList>
+    </S.Container>
+  );
+};
 
 export default ChooseDifficulty;

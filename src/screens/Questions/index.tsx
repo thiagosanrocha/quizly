@@ -1,14 +1,21 @@
 import React, { useState, useCallback } from 'react';
 import FeatherIcons from 'react-native-vector-icons/Feather';
+import { useSelector } from 'react-redux';
 
 import Answer from '../../components/Answer';
 import Button from '../../components/Button';
 import Modal from '../../components/Modal';
+import { IState } from '../../store';
+import { IConfigsSelected } from '../../store/modules/configsSelected/types';
 
 import * as S from './styles';
 
 const Questions = () => {
   const [modalIsVisibel, setModalIsVisibel] = useState(false);
+
+  const configsSelected = useSelector<IState, IConfigsSelected>(
+    state => state.configsSelected,
+  );
 
   const handleModalClosing = useCallback(
     () => setModalIsVisibel(!modalIsVisibel),
